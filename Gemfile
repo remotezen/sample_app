@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+#rm -f development.sqlite3 
 
 gem 'rails',        '5.1.2'
 gem 'bcrypt'
