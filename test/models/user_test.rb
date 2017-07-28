@@ -34,6 +34,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+
   test "email validation should accept valid format" do
     valid_addresses = %w[user@example.com USER@foo.COM A_US-ER@foo.bar.org
                          first.last@foo.jp alice+bob@baz.cn]
@@ -75,4 +76,7 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "authenticated? should return false for a user with a nil digest" do
+    assert_not @user.authenticated?('')
+  end
 end
