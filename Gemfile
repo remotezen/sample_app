@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
-#rm -f development.sqlite3 
+#rm -f development.sqlite3
 
 gem 'rails',        '5.1.2'
 gem 'bcrypt'
+gem 'faker'
 gem 'pry-rails'
 gem 'puma',         '3.9.1'
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate'
 gem 'sass-rails',   '5.0.6'
 gem 'uglifier',     '3.2.0'
 gem 'coffee-rails', '4.2.2'
