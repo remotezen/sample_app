@@ -2,6 +2,8 @@ class UsersController < ApplicationController
   before_action :logged_in_user, only: [:edit, :update, :index]
   before_action :correct_user,   only:   [:edit, :update]
 
+#rails generate migration add_admin_to_users admin:boolean
+
   def index
     @users = User.paginate(page: params[:page])
     #code
