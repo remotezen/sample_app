@@ -1,4 +1,4 @@
 Hi  <%= @user.name %>
 Welcome to the little organic Kitchen App!
 Click on the link below to complete your registration:
-<%= edit_account_activation(@user.activation_token, email: @user.email) %>
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
