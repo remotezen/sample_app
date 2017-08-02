@@ -10,7 +10,9 @@ User.create!(name: "Remote Zen",
              email: "remotezen@bell.net",
              password: "password",
              password_confirmation: "password",
-             admin: true
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now
              )
 
 User.create!(name: "Example User",
@@ -25,6 +27,8 @@ User.create!(name: "Example User",
 User.create!(name:name,
 email: email,
 password: password,
-password_confirmation: password
+password_confirmation: password,
+activated: true,
+activated_at: Time.zone.now
 )
 end
