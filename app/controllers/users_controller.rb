@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 #rails generate migration add_admin_to_users admin:boolean
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.where(activated: true).paginate(page: params[:page])
     #code
   end
 
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    #code
+    redirect_to root_url and return unless @user.activated?
   end
 
   def create
