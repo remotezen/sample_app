@@ -1,5 +1,8 @@
-<h1>User#account_activation</h1>
-
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+<h1>Little Organic Kitchen</h1>
+<p><%= @user.name %></p>
+<p>Welcome to the little organic kitchen app!!
+  Click the link below in order to activate your account
 </p>
+
+<%= link_to "Activate", edit_account_activation_url(@user.activation_token,
+                                                  @user.email) %>
