@@ -29,11 +29,16 @@ group :development do
   gem 'minitest'
   gem 'guard',                    '2.13.0'
   gem 'guard-minitest',           '2.4.4'
+  gem 'guard-brakeman'
+  gem 'guard-rubocop'
+  gem 'guard-yield'
 
 end
 
 group :test do
   gem 'minitest-reporters',       '1.1.14'
+  gem 'minitest-rails-capybara'
+  gem 'simplecov', require: false
 end
 
 group :production do
