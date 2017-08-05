@@ -27,11 +27,6 @@ group :development do
   gem 'spring',                '2.0.2'
   gem 'spring-watcher-listen', '2.0.1'
   gem 'minitest'
-  gem 'guard',                    '2.13.0'
-  gem 'guard-minitest',           '2.4.4'
-  gem 'guard-brakeman'
-  gem 'guard-rubocop'
-  gem 'guard-yield'
 
 end
 
@@ -39,6 +34,11 @@ group :test do
   gem 'minitest-reporters',       '1.1.14'
   gem 'minitest-rails-capybara'
   gem 'simplecov', require: false
+  gem 'guard',                    '2.13.0'
+  gem 'guard-minitest',           '2.4.4'
+  gem 'guard-brakeman'
+  gem 'guard-rubocop'
+  gem 'guard-yield'
 end
 
 group :production do

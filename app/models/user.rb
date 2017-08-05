@@ -1,7 +1,7 @@
 class User < ApplicationRecord
-  attr_accessor :remember_token, :activation_token
-  before_save :downcase_email
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
+  before_save :downcase_email
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :name, presence: true,
   length: { maximum: 50 }
@@ -13,7 +13,12 @@ class User < ApplicationRecord
 
   #/////////////////////////////
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+  validates :password, presence: true, 
+    length: { minimum: 6 }, allow_nil: true
+
+  def password_reset_expired?
+    reset_sent_at < 2.hours.ago
+  end
 
   def self.digest(string)
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST:
@@ -45,6 +50,16 @@ class User < ApplicationRecord
 
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  def create_reset_digest
+    self.reset_token = User.new_token
+    update_columns(reset_digest: User.digest(reset_token),
+    reset_sent_at: Time.zone.now)
+  end
+  def send_password_reset_email
+    UserMailer.password_reset(self).deliver_now
+    #code
   end
   private
     def downcase_email
